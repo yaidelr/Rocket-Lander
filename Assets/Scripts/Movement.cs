@@ -6,6 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 
+    AudioSource audioSource;
     Rigidbody rb;
     [SerializeField] float mainThrust = 200;
     [SerializeField] float scright = 200;
@@ -15,6 +16,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         
     }
 
@@ -22,6 +24,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         ProcessInput();
+        ProcessAudio();
     }
 
     void ProcessInput()
@@ -30,7 +33,6 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Space pressed: ");
             rb.AddRelativeForce(Vector3.up * Time.deltaTime * mainThrust );
-            
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -50,6 +52,39 @@ public class Movement : MonoBehaviour
 
     }
 
+    private void ProcessAudio()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Audio Playing!");
+            
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
+            
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            audioSource.Stop();
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        
+
+       
+    }
 
 
 
