@@ -31,7 +31,6 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            Debug.Log("Space pressed: ");
             rb.AddRelativeForce(Vector3.up * Time.deltaTime * mainThrust );
         }
 
@@ -56,7 +55,6 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Audio Playing!");
             
             if(!audioSource.isPlaying)
             {
