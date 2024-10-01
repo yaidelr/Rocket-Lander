@@ -11,8 +11,9 @@ public class Movement : MonoBehaviour
     [SerializeField] float mainThrust = 200;
     [SerializeField] float scright = 200;
     [SerializeField] float scleft  = 200;
+    [SerializeField] AudioClip bost;
 
-    // Start is called before the first frame update
+   
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,7 +21,6 @@ public class Movement : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         ProcessInput();
@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
             
             if(!audioSource.isPlaying)
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(bost);
             }
             else
             {
@@ -76,7 +76,7 @@ public class Movement : MonoBehaviour
         {
             if(!audioSource.isPlaying)
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(bost);
             }
         }
         

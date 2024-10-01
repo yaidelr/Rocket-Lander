@@ -3,23 +3,43 @@ using UnityEngine;
 
 public class CollisionHanfler : MonoBehaviour
 {
+
+    [SerializeField] float reloadDelay = 1f;
+    [SerializeField] AudioClip crash;
+    [SerializeField] AudioClip landed;
+
+    AudioSource  audioSource;
+
+
+
+    private void Start() {
+        audioSource = GetComponent<AudioSource>();
+    }
+
    private void OnCollisionEnter(Collision other) 
    {
+
         switch(other.gameObject.tag)
         {
             case "Enemy":
-            Reloadlevel();
-            Debug.Log("You hit a wall!");
+            audioSource.PlayOneShot(crash);
+            CrashSecuence();
+            
             break;
 
             case "Finish":
-            Nextlevel();
-            Debug.Log("Congrats you landed! ");
+            audioSource.PlayOneShot(landed);
+            Invoke("Nextlevel", reloadDelay);
             break;
 
         }
 
    }
+    void CrashSecuence(){
+        GetComponent<Movement>().enabled = false;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        Invoke("Reloadlevel" , reloadDelay);
+    }
 
     private void Reloadlevel()
     {
