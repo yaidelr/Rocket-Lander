@@ -24,12 +24,11 @@ public class CollisionHanfler : MonoBehaviour
             case "Enemy":
             audioSource.PlayOneShot(crash);
             CrashSecuence();
-            
             break;
 
             case "Finish":
             audioSource.PlayOneShot(landed);
-            Invoke("Nextlevel", reloadDelay);
+            LandSecuence();
             break;
 
         }
@@ -39,6 +38,12 @@ public class CollisionHanfler : MonoBehaviour
         GetComponent<Movement>().enabled = false;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         Invoke("Reloadlevel" , reloadDelay);
+    }
+
+    void LandSecuence(){
+        GetComponent<Movement>().enabled = false;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        Invoke("Nextlevel", reloadDelay);
     }
 
     private void Reloadlevel()
