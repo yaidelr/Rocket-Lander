@@ -12,12 +12,14 @@ public class Movement : MonoBehaviour
     [SerializeField] float scright = 200;
     [SerializeField] float scleft  = 200;
     [SerializeField] AudioClip bost;
+    [SerializeField] ParticleSystem booster;
 
    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        booster = GameObject.Find("boster").GetComponent<ParticleSystem>();
         
     }
 
@@ -32,6 +34,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rb.AddRelativeForce(Vector3.up * Time.deltaTime * mainThrust );
+            booster.Play();
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -55,7 +58,6 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            
             if(!audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(bost);

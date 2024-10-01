@@ -4,16 +4,20 @@ using UnityEngine;
 public class CollisionHanfler : MonoBehaviour
 {
 
-    [SerializeField] float reloadDelay = 1f;
+    [SerializeField] float reloadDelay = 2f;
     [SerializeField] AudioClip crash;
     [SerializeField] AudioClip landed;
 
+    [SerializeField] ParticleSystem crashParticle;
+    [SerializeField] ParticleSystem landedParticle;
     AudioSource  audioSource;
-
-
 
     private void Start() {
         audioSource = GetComponent<AudioSource>();
+
+        crashParticle = GameObject.Find("explosion particle").GetComponent<ParticleSystem>();
+        landedParticle = GameObject.Find("landing particle").GetComponent<ParticleSystem>();  
+  
     }
 
    private void OnCollisionEnter(Collision other) 
@@ -23,11 +27,13 @@ public class CollisionHanfler : MonoBehaviour
         {
             case "Enemy":
             audioSource.PlayOneShot(crash);
+            crashParticle.Play();
             CrashSecuence();
             break;
 
             case "Finish":
             audioSource.PlayOneShot(landed);
+            landedParticle.Play();
             LandSecuence();
             break;
 
