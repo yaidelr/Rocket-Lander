@@ -422,6 +422,7 @@ MonoBehaviour:
   landed: {fileID: 8300000, guid: fbdca15673510e1478dc86cd99f48cc6, type: 3}
   crashParticle: {fileID: 5138503445847649644, guid: fcff3d927ae1a6440910ffd601a7be99, type: 3}
   landedParticle: {fileID: 6204010420361576332, guid: 889f1b7f448453641a9a26016da0b840, type: 3}
+  collisionDisabled: 0
 --- !u!1 &2228619770933091006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,15 +1204,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8240555712399238854, guid: c2555c20089d96b48ab184b18c6bcfe6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.611
+      value: -0.628
       objectReference: {fileID: 0}
     - target: {fileID: 8240555712399238854, guid: c2555c20089d96b48ab184b18c6bcfe6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.617
+      value: 2.595
       objectReference: {fileID: 0}
     - target: {fileID: 8240555712399238854, guid: c2555c20089d96b48ab184b18c6bcfe6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.006
+      value: -0.191
       objectReference: {fileID: 0}
     - target: {fileID: 8240555712399238854, guid: c2555c20089d96b48ab184b18c6bcfe6, type: 3}
       propertyPath: m_LocalRotation.w
