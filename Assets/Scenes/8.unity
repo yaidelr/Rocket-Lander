@@ -326,7 +326,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1.15
+  m_XDamping: 1.05
   m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 1
@@ -1434,7 +1434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2560575056206198879, guid: b8049db69ca42c74ba221b5a42f35db3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.321087
+      value: 42.34
       objectReference: {fileID: 0}
     - target: {fileID: 2560575056206198879, guid: b8049db69ca42c74ba221b5a42f35db3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2500,6 +2500,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 146.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3465975333932429081, guid: d7a36bea9e7e7f245b8b8a64b3caefc1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5453822520008054317, guid: d7a36bea9e7e7f245b8b8a64b3caefc1, type: 3}
       propertyPath: m_TagString
       value: Friendly
@@ -2516,6 +2520,8 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 4845829907693996741, guid: d7a36bea9e7e7f245b8b8a64b3caefc1, type: 3}
     - {fileID: 97747780461155736, guid: d7a36bea9e7e7f245b8b8a64b3caefc1, type: 3}
+    - {fileID: 5777606240357515239, guid: d7a36bea9e7e7f245b8b8a64b3caefc1, type: 3}
+    - {fileID: 6786410523464662336, guid: d7a36bea9e7e7f245b8b8a64b3caefc1, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 377804520561369306, guid: d7a36bea9e7e7f245b8b8a64b3caefc1, type: 3}
       insertIndex: -1
