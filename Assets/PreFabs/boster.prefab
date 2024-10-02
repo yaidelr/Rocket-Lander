@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8240555712399238854}
   - component: {fileID: 5820754213680707278}
   - component: {fileID: 2784277373845349292}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: boster
   m_TagString: Untagged
   m_Icon: {fileID: 0}

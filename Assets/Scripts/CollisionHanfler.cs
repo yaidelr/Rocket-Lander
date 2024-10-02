@@ -11,8 +11,9 @@ public class CollisionHanfler : MonoBehaviour
     [SerializeField] ParticleSystem crashParticle;
     [SerializeField] ParticleSystem landedParticle;
     AudioSource  audioSource;
+    public bool collisionDisabled = false;
 
-    private void Start() {
+    void Start() {
         audioSource = GetComponent<AudioSource>();
 
         crashParticle = GameObject.Find("explosion particle").GetComponent<ParticleSystem>();
@@ -20,7 +21,14 @@ public class CollisionHanfler : MonoBehaviour
   
     }
 
-   private void OnCollisionEnter(Collision other) 
+    void Update() 
+    {
+        Debugkeys();
+    }
+
+
+    
+    private void OnCollisionEnter(Collision other) 
    {
 
         switch(other.gameObject.tag)
@@ -40,18 +48,25 @@ public class CollisionHanfler : MonoBehaviour
         }
 
    }
-    void CrashSecuence(){
-        GetComponent<Movement>().enabled = false;
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        Invoke("Reloadlevel" , reloadDelay);
-    }
+    
+        void CrashSecuence(){
+            if(!collisionDisabled){
+                GetComponent<Movement>().enabled = false;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                Invoke("Reloadlevel" , reloadDelay);
+            }
+            
+        }
 
-    void LandSecuence(){
-        GetComponent<Movement>().enabled = false;
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        Invoke("Nextlevel", reloadDelay);
-    }
-
+        void LandSecuence(){
+            if(!collisionDisabled)
+            {
+                GetComponent<Movement>().enabled = false;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                Invoke("Nextlevel", reloadDelay);
+            }
+        }
+    
     private void Reloadlevel()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -61,7 +76,6 @@ public class CollisionHanfler : MonoBehaviour
     private void Nextlevel()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
-
 
        if(currentScene +1 == SceneManager.sceneCountInBuildSettings)
        {
@@ -74,4 +88,20 @@ public class CollisionHanfler : MonoBehaviour
             
     }
 
+    void Debugkeys()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("Level Skipped!");
+            Nextlevel();
+        }
+
+        else if(Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log("Collision: "+ collisionDisabled);
+            collisionDisabled = !collisionDisabled;
+        }
+    
+    
+    }
 }
