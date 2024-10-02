@@ -20,7 +20,7 @@ UnityEngine.Vector3 startingPosition;
     // Update is called once per frame
     void Update()
     {
-        if(period != 0) {
+        if(period >=  Mathf.Epsilon) {
             float cycle = Time.time / period ;
             const float tau = Mathf.PI * 2 ;
             float sineWave = Mathf.Sin(cycle * tau);
